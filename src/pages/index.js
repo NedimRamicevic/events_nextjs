@@ -1,7 +1,11 @@
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
+import HomePage from "../components/home/home-page";
+import Footer from "../components/footer/footer";
+import Header from "../components/header/header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,28 +18,12 @@ export default function Home({ data }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <header>
-        <img />
-        <nav>
-          <a href="/">Home</a>
-          <a href="/events">Events</a>
-          <a href="/about-us">About Us</a>
-        </nav>
-      </header>
-      <main className={styles.main}>
-        {data.map((item) => (
-          <a href={`/events/${item.id}`} key={item.id}>
-            <Image src={item.image} width={170} height={100} alt={item.title} />
-            <h2>{item.title}</h2>
-            <p>{item.description}</p>
-          </a>
-        ))}
-      </main>
+      <HomePage data={data} />
     </>
   );
 }
 export async function getServerSideProps() {
-  const { events_categories } = await import("../../data/data.json");
+  const { events_categories } = await import("/data/data.json");
   console.log(events_categories);
   return {
     props: {

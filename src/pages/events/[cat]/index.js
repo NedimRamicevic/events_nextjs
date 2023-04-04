@@ -1,23 +1,18 @@
 import Image from "next/image";
+import Link from "next/link";
 
-function EventsCatPage({ data }) {
+function EventsCatPage({ data, eventName }) {
   return (
     <div>
-      <h1>Events in {data[0].city} </h1>
+      <h1>Events in {eventName} </h1>
 
       <ul>
         {data.map((item) => (
-          <li key={item.id}>
-            <a href={`/events/${item.city}/${item.id}`}>
-              <Image
-                src={item.image}
-                width={200}
-                height={200}
-                alt={item.title}
-              />
-              <h2>{item.title}</h2>
-            </a>
-          </li>
+          <Link key={item.id} href={`/events/${item.city}/${item.id}`} passHref>
+            <Image src={item.image} width={200} height={200} alt={item.title} />
+            <h2>{item.title}</h2>
+            <p>{item.description} </p>
+          </Link>
         ))}
       </ul>
     </div>
@@ -44,7 +39,8 @@ export async function getStaticProps(context) {
   console.log(data);
   return {
     props: {
-      data: data,
+      data,
+      eventName: id,
     },
   };
 }

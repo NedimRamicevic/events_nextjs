@@ -1,7 +1,4 @@
-// events main page
-import Image from "next/image";
-import Link from "next/link";
-import Events from "../../components/Events";
+import Events from "../../components/events/events-page";
 
 function EventsPage({ data }) {
   return <Events data={data} />;
