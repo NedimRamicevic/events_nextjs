@@ -1,22 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
+import CatEvent from "../../../components/events/catEvent";
 
 function EventsCatPage({ data, eventName }) {
-  return (
-    <div>
-      <h1>Events in {eventName} </h1>
-
-      <ul>
-        {data.map((item) => (
-          <Link key={item.id} href={`/events/${item.city}/${item.id}`} passHref>
-            <Image src={item.image} width={200} height={200} alt={item.title} />
-            <h2>{item.title}</h2>
-            <p>{item.description} </p>
-          </Link>
-        ))}
-      </ul>
-    </div>
-  );
+  return <CatEvent data={data} eventName={eventName} />;
 }
 
 export default EventsCatPage;
