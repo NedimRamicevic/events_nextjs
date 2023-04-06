@@ -5,13 +5,8 @@ body {
 }
 
 body {
-  color: red;
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: black;
+  background: white;
 }
 
 a {
